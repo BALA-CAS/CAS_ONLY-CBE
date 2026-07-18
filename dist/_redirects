@@ -1,0 +1,111 @@
+# ==========================================================================
+# Covai Accounting Services — Coimbatore-only redirect map
+# Multi-city strategy removed in favour of a single-location Coimbatore site.
+# Rules are evaluated top to bottom — first match wins.
+# ==========================================================================
+
+# ---- Locations overview & alternate "all cities" routes -> Areas hub ----
+/locations		/areas/		301
+/tamil-nadu		/areas/		301
+/tamil-nadu-cities		/areas/		301
+/cities-we-serve		/areas/		301
+/our-locations		/areas/		301
+/all-cities		/areas/		301
+
+# ---- /locations/coimbatore + its service combos -> new canonical service pages ----
+/locations/coimbatore		/areas/		301
+/locations/coimbatore/gst-registration		/services/gst-registration/		301
+/locations/coimbatore/gst-returns		/services/gst-return-filing/		301
+/locations/coimbatore/gst-notices		/services/gst-notice-scrutiny-response/		301
+/locations/coimbatore/gst-refunds		/services/gst-refund-assistance/		301
+/locations/coimbatore/income-tax-filing		/services/income-tax-return-filing/		301
+/locations/coimbatore/company-registration		/services/company-incorporation/		301
+/locations/coimbatore/accounting-bookkeeping		/services/accounting-bookkeeping/		301
+/locations/coimbatore/pf-esi-services		/services/pf-esi-registration-returns/		301
+/locations/coimbatore/tds-tcs-returns		/services/tds-tcs-return-filing/		301
+/locations/coimbatore/udyam-registration		/services/udyam-registration/		301
+/locations/coimbatore/iec-registration		/services/iec-registration/		301
+/locations/coimbatore/*		/areas/		301
+
+# ---- All other Tamil Nadu city pages & their service combos -> Home ----
+# (These cities are no longer served under the Coimbatore-only strategy.)
+/locations/chennai		/		301
+/locations/madurai		/		301
+/locations/salem		/		301
+/locations/erode		/		301
+/locations/tirupur		/		301
+/locations/vellore		/		301
+/locations/tiruchirappalli		/		301
+/locations/tirunelveli		/		301
+/locations/thoothukudi		/		301
+/locations/dindigul		/		301
+/locations/thanjavur		/		301
+/locations/ranipet		/		301
+/locations/sivakasi		/		301
+/locations/karur		/		301
+/locations/hosur		/		301
+/locations/nagercoil		/		301
+/locations/kumbakonam		/		301
+/locations/pollachi		/		301
+/locations/ambur		/		301
+/locations/srivilliputtur		/		301
+/locations/rajapalayam		/		301
+/locations/kanchipuram		/		301
+/locations/cuddalore		/		301
+/locations/tiruvannamalai		/		301
+/locations/namakkal		/		301
+/locations/dharmapuri		/		301
+/locations/krishnagiri		/		301
+/locations/pudukkottai		/		301
+/locations/ramanathapuram		/		301
+/locations/virudhunagar		/		301
+/locations/theni		/		301
+/locations/nagapattinam		/		301
+/locations/ariyalur		/		301
+/locations/perambalur		/		301
+/locations/nilgiris		/		301
+/locations/kanyakumari		/		301
+/locations/tirupattur		/		301
+/locations/*		/		301
+
+# ---- Renamed service URLs (old slug -> new descriptive slug) ----
+/services/gst-returns		/services/gst-return-filing/		301
+/gst-returns		/services/gst-return-filing/		301
+/services/gst-notices		/services/gst-notice-scrutiny-response/		301
+/gst-notices		/services/gst-notice-scrutiny-response/		301
+/services/gst-refunds		/services/gst-refund-assistance/		301
+/gst-refunds		/services/gst-refund-assistance/		301
+/services/income-tax-filing		/services/income-tax-return-filing/		301
+/income-tax-filing		/services/income-tax-return-filing/		301
+/services/company-registration		/services/company-incorporation/		301
+/company-registration		/services/company-incorporation/		301
+/services/pf-esi-services		/services/pf-esi-registration-returns/		301
+/pf-esi-services		/services/pf-esi-registration-returns/		301
+/services/tds-tcs-returns		/services/tds-tcs-return-filing/		301
+/tds-tcs-returns		/services/tds-tcs-return-filing/		301
+/services/pf-esi		/services/pf-esi-registration-returns/		301
+/income-tax		/services/income-tax-return-filing/		301
+/tds-tcs		/services/tds-tcs-return-filing/		301
+/pf-esi		/services/pf-esi-registration-returns/		301
+
+# ---- Unchanged service slugs: root-level alt paths -> canonical /services/ path ----
+/gst-registration		/services/gst-registration/		301
+/accounting-bookkeeping		/services/accounting-bookkeeping/		301
+/udyam-registration		/services/udyam-registration/		301
+/iec-registration		/services/iec-registration/		301
+
+# ---- Retired internal tool page (was tied to the 465-page multi-city build) ----
+/audit		/		301
+
+# ---- Old React-route sitemap page -> new static HTML sitemap ----
+/sitemap		/sitemap-page/		301
+
+# ---- Trailing-slash canonicalisation for main pages ----
+/about		/about/		301
+/contact		/contact/		301
+/services		/services/		301
+/areas		/areas/		301
+/blog		/blog/		301
+/privacy-policy		/privacy-policy/		301
+/terms-of-service		/terms-of-service/		301
+
