@@ -1,6 +1,6 @@
 /* ===================================================================
    Covai Accounting Services — design system
-   Navy / green brand palette, Space Grotesk display, Inter body,
+   Navy / green brand palette, Source Serif 4 display, Inter body,
    IBM Plex Mono for data & labels.
    =================================================================== */
 
@@ -40,27 +40,29 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', 'Public Sans', system-ui, -apple-system, sans-serif;
   color: var(--ink-900);
   background: var(--white);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
   font-weight: 600;
-  line-height: 1.15;
+  line-height: 1.2;
   margin: 0 0 .5em;
   color: var(--navy-950);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.005em;
 }
-h1 { font-size: clamp(2rem, 1.4rem + 2.4vw, 3.1rem); }
-h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem); }
-h3 { font-size: 1.3rem; }
-h4 { font-size: 1.05rem; }
-p { margin: 0 0 1em; color: var(--ink-600); }
+h1 { font-size: clamp(2.1rem, 1.4rem + 2.6vw, 3.25rem); font-weight: 600; }
+h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem); font-weight: 600; }
+h3 { font-size: 1.32rem; font-weight: 500; }
+h4 { font-size: 1.05rem; font-weight: 500; }
+p { margin: 0 0 1em; color: var(--ink-600); line-height: 1.7; }
+p.lead, .hero p.lead, .page-hero p { line-height: 1.6; letter-spacing: 0; }
+small, .text-sm { font-size: .85rem; line-height: 1.55; }
 a { color: var(--green-600); text-decoration: none; }
 a:hover { text-decoration: underline; }
 strong { color: var(--ink-900); }
@@ -96,8 +98,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 /* ---------- Header ---------- */
 header.site-header { border-bottom: 1px solid var(--line); position: sticky; top: 0; background: rgba(255,255,255,.97); backdrop-filter: blur(6px); z-index: 100; }
 .nav-wrap { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 20px; }
-.brand { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--navy-950); font-size: 1.15rem; }
-.brand img { height: 42px; width: auto; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; color: var(--navy-950); font-size: 1.15rem; letter-spacing: -0.005em; }
+.brand img { height: 42px; width: 42px; padding: 5px; box-sizing: border-box; background: #fff; object-fit: contain; border-radius: var(--radius-md); }
 nav.main-nav { display: flex; align-items: center; gap: 4px; }
 nav.main-nav > ul { display: flex; align-items: center; gap: 2px; list-style: none; margin: 0; padding: 0; }
 nav.main-nav > ul > li { position: relative; }
@@ -140,7 +142,7 @@ nav.main-nav a.nav-link:hover { background: var(--sand-100); text-decoration: no
 .hero h1 { color: #fff; max-width: 820px; }
 .hero p.lead { color: #c9d3e2; font-size: 1.15rem; max-width: 640px; }
 .hero-stats { display: flex; gap: 34px; margin-top: 34px; flex-wrap: wrap; }
-.hero-stats div b { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.7rem; color: #fff; }
+.hero-stats div b { display: block; font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 1.7rem; color: #fff; }
 .hero-stats div span { color: #9fb0c9; font-size: .85rem; }
 .hero-actions { display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: var(--radius-sm); font-weight: 600; font-size: .96rem; border: 1px solid transparent; cursor: pointer; }
@@ -224,7 +226,7 @@ section { padding: 64px 0; }
 /* ---------- Tables ---------- */
 table.plain { width: 100%; border-collapse: collapse; font-size: .93rem; }
 table.plain th, table.plain td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); }
-table.plain th { font-family: 'Space Grotesk', sans-serif; color: var(--navy-950); background: var(--sand-50); }
+table.plain th { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; color: var(--navy-950); background: var(--sand-50); }
 
 /* ---------- CTA banner ---------- */
 .cta-banner { background: linear-gradient(135deg, var(--green-600), var(--navy-800)); color: #fff; border-radius: var(--radius-lg); padding: 48px; text-align: center; }

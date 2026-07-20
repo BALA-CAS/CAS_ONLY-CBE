@@ -5,6 +5,7 @@ type BloggerPost = {
   published: string
   author: string
   excerpt: string
+  slug: string
   url: string
 }
 
@@ -30,7 +31,7 @@ function escapeHtml(value: string) {
 }
 
 function isValidPost(post: BloggerPost) {
-  if (!post.title || !post.excerpt || Number.isNaN(Date.parse(post.published))) return false
+  if (!post.title || !post.excerpt || !post.slug || Number.isNaN(Date.parse(post.published))) return false
 
   try {
     const url = new URL(post.url)
@@ -50,12 +51,41 @@ function formatDate(value: string) {
 }
 
 function renderPost(post: BloggerPost) {
+  const href = `/blog/${escapeHtml(post.slug)}/`
   return `<article class="card">
             <span class="tag">Latest Blog &middot; ${escapeHtml(formatDate(post.published))}</span>
-            <h3 style="margin-top:8px;"><a href="${escapeHtml(post.url)}" target="_blank" rel="noopener">${escapeHtml(post.title)}</a></h3>
+            <h3 style="margin-top:8px;"><a href="${href}">${escapeHtml(post.title)}</a></h3>
             <p>${escapeHtml(post.excerpt)}</p>
-            <a class="card-link" href="${escapeHtml(post.url)}" target="_blank" rel="noopener">Read full article →</a>
+            <a class="card-link" href="${href}">Read full article →</a>
           </article>`
+}
+
+function renderStructuredData(posts: BloggerPost[]) {
+  const entries = posts.map((post) => {
+    const canonicalUrl = `https://covaiaccountingservices.in/blog/${post.slug}/`
+    return {
+      '@type': 'BlogPosting',
+      headline: post.title,
+      datePublished: post.published,
+      author: { '@type': 'Person', name: post.author },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Covai Accounting Services',
+        logo: { '@type': 'ImageObject', url: 'https://covaiaccountingservices.in/assets/images/logo.png' },
+      },
+      description: post.excerpt,
+      url: canonicalUrl,
+      mainEntityOfPage: canonicalUrl,
+      sameAs: [post.url],
+    }
+  })
+
+  const graph = {
+    '@context': 'https://schema.org',
+    '@graph': entries,
+  }
+
+  return `<script type="application/ld+json">${JSON.stringify(graph)}</script>`
 }
 
 function renderSection(posts: BloggerPost[]) {
@@ -68,7 +98,8 @@ function renderSection(posts: BloggerPost[]) {
     <div class="grid grid-3">
       ${posts.map(renderPost).join('\n')}
     </div>
-  </div></section>`
+  </div></section>
+  ${renderStructuredData(posts)}`
 }
 
 export default async (request: Request, context: Context) => {
@@ -90,7 +121,7 @@ export default async (request: Request, context: Context) => {
     if (!html.includes(INSERTION_MARKER)) return upstreamResponse
 
     const headers = new Headers(upstreamResponse.headers)
-    headers.set('Cache-Control', 'public, max-age=300, s-maxage=3600, stale-while-revalidate=86400')
+    headers.set('Cache-Control', 'no-store')
     headers.delete('content-length')
 
     return new Response(html.replace(INSERTION_MARKER, renderSection(posts)), {
